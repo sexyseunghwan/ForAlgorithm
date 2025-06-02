@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ void dfs(int r, int c, int limit) {
         int next_c = c + dc[i];
         
         if (next_r < N && next_c < N && next_r >= 0 && next_c >= 0 
-            && map[next_r][next_c] > limit &&visited[next_r][next_c] == 0) {
+            && map[next_r][next_c] > limit && visited[next_r][next_c] == 0) {
             dfs(next_r, next_c, limit);
         }
     }        
@@ -33,26 +34,49 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0), cout.tie(0);
 
-    cout << "test" << endl;
+    cin >> N;
 
-    // cin >> N;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+           int input;
+           cin >> input;
+           
+           min_val = min(min_val, input);
+           max_val = max(max_val, input);
 
-    // for (int i = 0; i < N*N; i++) {
-    //     int input;
-    //     cin >> input;
+           map[i][j] = input;
+        }
+    }
+    
+    
+    for (int i = min_val; i < max_val; i++) {
         
-    //     min_val = min(min_val, input);
-    //     max_val = max(max_val, input);
-    // }
+        cur_safety_area = 0;
+        memset(visited, 0, sizeof(visited));
+
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                if (visited[j][k] == 0 && map[j][k] > i) {
+                    cur_safety_area++;
+                    dfs(j,k,i);
+                }
+            }
+        }
+        
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                cout << visited[j][k] << " ";
+            }
+            cout << endl;
+        }
+
+
+        cout << "cur_safety_area : " << cur_safety_area << endl;
+
+        total_safety_area = max(total_safety_area, cur_safety_area);
+    }
     
-    // for (int i = min_val; i < max_val; i++) {
-    //     for (int j = 0; j < N*N; j++) {
-    //         int r = j / N; 
-    //         int c = j % N;     
-    //     }
-    // }
-    
-    
+    cout << total_safety_area << endl;
 
     return 0;
 }

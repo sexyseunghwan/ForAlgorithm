@@ -20,4 +20,4 @@ g++ -std=c++17 -Wall -Wextra -o 2665_dijkstra 2665_dijkstra.cpp
 
 g++ -std=c++17 -Wall -Wextra -o 2468 2468.cpp
 
-g++ -std=c++17 -Wall -Wextra -o 2468 2468.cpp
+g++ -std=c++17 -Wall -Wextra -o main main.cpp
