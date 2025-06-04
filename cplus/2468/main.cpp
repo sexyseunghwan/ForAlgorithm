@@ -48,7 +48,8 @@ int main()
         }
     }
     
-    
+    total_safety_area = 1;
+
     for (int i = min_val; i < max_val; i++) {
         
         cur_safety_area = 0;
@@ -62,16 +63,7 @@ int main()
                 }
             }
         }
-        
-        for (int j = 0; j < N; j++) {
-            for (int k = 0; k < N; k++) {
-                cout << visited[j][k] << " ";
-            }
-            cout << endl;
-        }
 
-
-        cout << "cur_safety_area : " << cur_safety_area << endl;
 
         total_safety_area = max(total_safety_area, cur_safety_area);
     }
