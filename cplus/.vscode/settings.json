@@ -3,6 +3,8 @@
         "*.erd": "json",
         "*.vuerd": "json",
         "iostream": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "ios": "cpp",
+        "vector": "cpp"
     }
 }
