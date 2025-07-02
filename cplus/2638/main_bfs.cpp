@@ -9,10 +9,9 @@ int N,M;
 int map[100][100];
 int total_time;
 int total_cnt;
+bool air_visited[100][100];
 int dr[4] = {0,0,1,-1};
 int dc[4] = {1,-1,0,0};
-int visited_version[100][100];
-int cur_version = 1;
 
 vector<pair<int,int>> cheese_list;
 
@@ -20,7 +19,6 @@ void air_bfs(int r, int c)
 {
     queue<pair<int,int>> que;
     que.push({r,c});
-    visited_version[r][c] = cur_version;
 
     while(!que.empty()) {
         int cur_r = que.front().first;
@@ -32,9 +30,9 @@ void air_bfs(int r, int c)
             int next_c = cur_c + dc[i];
             
             if (next_r >= 0 && next_c >= 0 && next_r < N && next_c < M 
-                && visited_version[next_r][next_c] != cur_version && map[next_r][next_c] == 0) 
+                && !air_visited[next_r][next_c] && map[next_r][next_c] != 1) 
             {
-                visited_version[next_r][next_c] = cur_version;
+                air_visited[next_r][next_c] = true;
                 que.push({next_r, next_c});
             }
         }
@@ -53,7 +51,7 @@ void cheese_search()
             int next_r = r + dr[i];
             int next_c = c + dc[i];
 
-            if (visited_version[next_r][next_c] == cur_version) ++air_cnt;
+            if (air_visited[next_r][next_c]) ++air_cnt;
             if (air_cnt == 2) break;
         }
 
@@ -90,8 +88,8 @@ int main()
     }
 
     while(total_cnt > 0) {
+        memset(air_visited, 0, sizeof(air_visited));
         total_time++;
-        cur_version++; 
         air_bfs(0,0);
         cheese_search();
     }
