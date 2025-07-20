@@ -22,4 +22,6 @@ g++ -std=c++17 -Wall -Wextra -o 2468 2468.cpp
 
 g++ -std=c++17 -Wall -Wextra -o main main.cpp
 
+g++ -std=c++17 -Wall -Wextra -o main main1.cpp
+
 g++ -std=c++17 -Wall -Wextra -o main_bfs main_bfs.cpp
