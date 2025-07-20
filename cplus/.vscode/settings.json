@@ -6,6 +6,13 @@
         "queue": "cpp",
         "ios": "cpp",
         "vector": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "array": "cpp",
+        "tuple": "cpp",
+        "variant": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
     }
 }
