@@ -73,6 +73,28 @@ void dfs(int cur_r, int cur_c)
     }
 }
 
+void check_cheese(int cur_r, int cur_c)
+{
+    bool air_touch = false;
+    
+    for (int i = 0; i < 4; i++)
+    {
+        int next_r = cur_r + dr[i];
+        int next_c = cur_c + dc[i];
+
+        if (next_r >= 0 && next_c >= 0 && next_r < N && next_c < M && map[next_r][next_c] == 0 && air_map[next_r][next_c] == 1)
+        {
+            air_touch = true;
+            break;
+        }
+    }
+
+    if (air_touch) {
+        map[cur_r][cur_c] = 0;
+        --cur_total_cnt;
+    }
+}
+
 
 int main()
 {
@@ -113,7 +135,7 @@ int main()
             {
                 if (map[i][j] == 1)
                 {
-                    //dfs(i,j);
+                    check_cheese(i,j);
                 }
             }
         }
