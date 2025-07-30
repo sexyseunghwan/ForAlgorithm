@@ -31,16 +31,10 @@ int main()
         }
     }
 
-    for (int i = 0; i <= N; i++)
-    {
-        for (int j = 0; j <= W; j++)
-        {
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
-    }
 
     cout << dp[N][W] << endl;
 
     return 0;
 }
+
+

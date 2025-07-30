@@ -26,10 +26,20 @@ g++ -std=c++17 -Wall -Wextra -o dynamic dynamic.cpp
 
 g++ -std=c++17 -Wall -Wextra -o main main1.cpp
 
+g++ -std=c++17 -Wall -Wextra -o order order.cpp
+
+
 g++ -std=c++17 -Wall -Wextra -o main_bfs main_bfs.cpp
 
 
-
+# // 7
+# // A B C
+# // B D .
+# // C E F
+# // E . .
+# // F . G
+# // D . .
+# // G . .
 
 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0
