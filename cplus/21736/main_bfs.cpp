@@ -3,7 +3,7 @@
 #include <queue>
 
 using namespace std;
-
+//hahahahahaha
 int N,M;
 char map[600][600];
 bool visited[600][600];
