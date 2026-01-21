@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -46,21 +47,228 @@ void operation_2() {
 
 void operation_3() {
 
+    vector<int> vec;
+    vec.reserve(N*M);
 
+    for (int c = 0; c < M; c++) {
+        for (int r = N-1; r >= 0; r--) {
+            vec.push_back(arr[r][c]);
+        }
+    }
+
+    int temp = N;
+    N = M;
+    M = temp;
+    int idx = 0;
+
+    for (int r = 0; r < N; r++) {
+        for (int c = 0; c < M; c++) {
+            arr[r][c] = vec[idx];
+            idx++;
+        }
+    }
 }
 
 void operation_4() {
 
+    vector<int> vec;
+    vec.reserve(N*M);
 
+    for (int c = M-1; c >= 0; c--) {
+        for (int r = 0; r < N; r++) {
+            vec.push_back(arr[r][c]);
+        }
+    }
+
+    int temp = N;
+    N = M;
+    M = temp;
+    int idx = 0;
+
+    for (int r = 0; r < N; r++) {
+        for (int c = 0; c < M; c++) {
+            arr[r][c] = vec[idx];
+            idx++;
+        }
+    }
 }
 
 void operation_5() {
 
+    vector<vector<int>> vec;
+    vec.reserve(4);
 
+    int p_r = N/2;
+    int p_c = M/2;
+
+    vector<int> a1;
+    a1.reserve(p_r*p_c);
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = 0; c < p_c; c++) {
+            a1.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a1);
+
+    vector<int> a2;
+    a2.reserve(p_r*p_c);
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = p_c; c < M; c++) {
+            a2.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a2);
+
+    vector<int> a3;
+    a3.reserve(p_r*p_c);
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = p_c; c < M; c++) {
+            a3.push_back(arr[r][c]);     
+        }
+    }
+
+    vec.push_back(a3);
+
+    vector<int> a4;
+    a4.reserve(p_r*p_c);
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = 0; c < p_c; c++) {
+            a4.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a4);
+
+    int idx = 0;
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = 0; c < p_c; c++) {
+            arr[r][c] = vec[3][idx];
+            idx++;
+        }
+    }
+
+    idx = 0;
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = p_c; c < M; c++) {
+            arr[r][c] = vec[0][idx];
+            idx++;
+        }
+    }
+
+    idx = 0;
+    
+    for (int r = p_r; r < N; r++) {
+        for (int c = p_c; c < M; c++) {
+            arr[r][c] = vec[1][idx];
+            idx++;    
+        }
+    }
+
+    idx = 0;
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = 0; c < p_c; c++) {
+            arr[r][c] = vec[2][idx];
+            idx++;
+        }
+    }
 }
 
 void operation_6() {
 
+    vector<vector<int>> vec;
+    vec.reserve(4);
+
+    int p_r = N/2;
+    int p_c = M/2;
+
+    vector<int> a1;
+    a1.reserve(p_r*p_c);
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = 0; c < p_c; c++) {
+            a1.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a1);
+
+    vector<int> a2;
+    a2.reserve(p_r*p_c);
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = p_c; c < M; c++) {
+            a2.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a2);
+
+    vector<int> a3;
+    a3.reserve(p_r*p_c);
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = p_c; c < M; c++) {
+            a3.push_back(arr[r][c]);     
+        }
+    }
+
+    vec.push_back(a3);
+
+    vector<int> a4;
+    a4.reserve(p_r*p_c);
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = 0; c < p_c; c++) {
+            a4.push_back(arr[r][c]);
+        }
+    }
+
+    vec.push_back(a4);
+
+    int idx = 0;
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = 0; c < p_c; c++) {
+            arr[r][c] = vec[1][idx];
+            idx++;
+        }
+    }
+
+    idx = 0;
+
+    for (int r = 0; r < p_r; r++) {
+        for (int c = p_c; c < M; c++) {
+            arr[r][c] = vec[2][idx];
+            idx++;
+        }
+    }
+
+    idx = 0;
+    
+    for (int r = p_r; r < N; r++) {
+        for (int c = p_c; c < M; c++) {
+            arr[r][c] = vec[3][idx];
+            idx++;    
+        }
+    }
+
+    idx = 0;
+
+    for (int r = p_r; r < N; r++) {
+        for (int c = 0; c < p_c; c++) {
+            arr[r][c] = vec[0][idx];
+            idx++;
+        }
+    }
 
 }
 
