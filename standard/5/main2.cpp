@@ -5,21 +5,11 @@ using namespace std;
 
 int minimum_swaps(vector<int>& arr) 
 {
-    vector<bool> visited(arr.size(), false);
     int cnt = 0;
 
     for (int i = 0; i < arr.size(); i++) {
-        int cur_x = arr[i];
-
-        if (cur_x-1 == i || visited[i]) {
-            continue;
-        }
-        
-        while(cur_x-1 != i && !visited[i]) {
-            int x_pos = cur_x - 1;
-            int temp_val = arr[x_pos];
-            arr[x_pos] = cur_x;
-            cur_x = temp_val;
+        while(arr[i]-1 != i) {
+            swap(arr[i], arr[arr[i]-1]);
             cnt++;
         }
     }
